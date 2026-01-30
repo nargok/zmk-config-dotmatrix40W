@@ -25,11 +25,14 @@
 };
 
 / {
-    always_high_pin: always_high_pin {
-        compatible = "regulator-fixed";
-        regulator-name = "always_high_pin";
-        enable-gpios = <&gpio1 9 GPIO_ACTIVE_HIGH>;
-        regulator-always-on;
+    backlight: backlight {
+        compatible = "gpio-backlight";
+        gpios = <&gpio1 9 GPIO_ACTIVE_HIGH>;
+        default-state = "on";
+    };
+
+    chosen {
+        zmk,backlight = &backlight;
     };
 };
 
