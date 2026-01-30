@@ -24,6 +24,16 @@
     status = "disabled"; 
 };
 
+/ {
+    extra_power: extra_power {
+         compatible = "regulator-fixed";
+         regulator-name = "extra_power";
+         enable-gpios = <&gpio1 9 GPIO_ACTIVE_HIGH>;
+         regulator-boot-on;
+         regulator-always-on;
+    };
+};
+
 &vbatt {
     io-channels = <&adc 0>;
 };
