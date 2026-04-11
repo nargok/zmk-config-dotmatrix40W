@@ -11,6 +11,14 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
+    behaviors {
+        rot_scrl: sensor_rotate_mouse_scroll {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -21,7 +29,7 @@
     &kp LSHIFT &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT    &kp UP     &kp FSLH
     &mo 1      &kp LCTRL  &kp LALT   &kp LANG2  &kp SPACE                        &kp RET    &kp LANG1  &kp LEFT   &kp DOWN   &kp RIGHT
             >;
-            sensor-bindings = <&msc SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&rot_scrl SCRL_DOWN SCRL_UP>;
         };
 
         rgb_layer {
