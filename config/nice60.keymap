@@ -8,6 +8,7 @@
 #include <dt-bindings/zmk/keys.h>  // Standard keycodes
 #include <dt-bindings/zmk/rgb.h>   // RGB lighting control
 #include <dt-bindings/zmk/bt.h>    // Bluetooth management
+#include <dt-bindings/zmk/backlight.h> // Backlight control
 / {
     keymap {
         compatible = "zmk,keymap";
@@ -34,7 +35,7 @@
 
         second_layer {
             bindings = <
-    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+    &bl BL_TOG &bl BL_DEC &bl BL_INC  &none  &none  &none  &none  &none  &none  &none  &none  &none
     &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
     &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
     &none  &none  &none  &none  &none                &bt BT_CLR  &none  &none  &none  &none
