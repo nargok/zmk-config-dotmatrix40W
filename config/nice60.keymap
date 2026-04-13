@@ -17,6 +17,11 @@
             #sensor-binding-cells = <0>;
             bindings = <&bl BL_INC>, <&bl BL_DEC>;
         };
+        msc_scrl: msc_scrl {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+        };
     };
 
     keymap {
@@ -29,7 +34,7 @@
     &kp LSHIFT &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT    &kp UP     &kp FSLH
     &mo 1      &kp LCTRL  &kp LALT   &kp LANG2  &kp SPACE                        &kp RET    &kp LANG1  &kp LEFT   &kp DOWN   &kp RIGHT
             >;
-            sensor-bindings = <&inc_dec_kp DOWN UP>;
+            sensor-bindings = <&msc_scrl SCRL_DOWN SCRL_UP>;
         };
 
         first_layer {
