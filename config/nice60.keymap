@@ -13,6 +13,23 @@
 #include <dt-bindings/zmk/pointing.h> // Mouse emulation
 
 / {
+    macros {
+        mac_scrl_up: mac_scrl_up {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <30>;
+            bindings = <&msc SCRL_UP>;
+        };
+        mac_scrl_dn: mac_scrl_dn {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <30>;
+            bindings = <&msc SCRL_DOWN>;
+        };
+    };
+
     behaviors {
         bl_encoder: bl_encoder {
             compatible = "zmk,behavior-sensor-rotate";
@@ -20,9 +37,9 @@
             bindings = <&bl BL_INC>, <&bl BL_DEC>;
         };
         msc_scrl: msc_scrl {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&mac_scrl_dn>, <&mac_scrl_up>;
         };
     };
 
@@ -36,7 +53,7 @@
     &kp LSHIFT &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT    &kp UP     &kp FSLH
     &mo 1      &kp LCTRL  &kp LALT   &kp LANG2  &kp SPACE                        &kp RET    &kp LANG1  &kp LEFT   &kp DOWN   &kp RIGHT
             >;
-            sensor-bindings = <&msc_scrl SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&msc_scrl>;
         };
 
         first_layer {
