@@ -18,11 +18,8 @@ static int blink_count = 0;
 // タイマー定義
 static void led_timer_handler(struct k_timer *timer);
 static void led_work_handler(struct k_work *work);
-static void connected_timeout_handler(struct k_work *work);
-
 K_TIMER_DEFINE(led_timer, led_timer_handler, NULL);
 K_WORK_DEFINE(led_work, led_work_handler);
-K_WORK_DELAYABLE_DEFINE(connected_timeout_work, connected_timeout_handler);
 
 // LEDのON/OFF切り替え用関数
 static void toggle_led(bool state) {
@@ -31,19 +28,18 @@ static void toggle_led(bool state) {
   }
 }
 
-// 接続成功時の消灯処理（3秒後に呼ばれる）
-static void connected_timeout_handler(struct k_work *work) {
-  toggle_led(false);
-}
+
 
 // 点滅タイマーの処理
 static void led_work_handler(struct k_work *work) {
   led_state = !led_state;
   toggle_led(led_state);
 
-  // ONになるタイミングでカウントを1増やす
   if (led_state) {
+    k_timer_start(&led_timer, K_MSEC(200), K_NO_WAIT);
     blink_count++;
+  } else {
+    k_timer_start(&led_timer, K_MSEC(1800), K_NO_WAIT);
   }
 
   // ONが10回したら強制消灯して終了
@@ -65,21 +61,15 @@ static void connected(struct bt_conn *conn, uint8_t err) {
 
   // 点滅中なら止める
   k_timer_stop(&led_timer);
-
-  // 接続成功を知らせるために3秒間LEDを常時点灯させる
-  toggle_led(true);
-  // k_work_schedule(&connected_timeout_work, K_SECONDS(3));
+  toggle_led(false);
 }
 
 // Bluetooth切断時のコールバック
 static void disconnected(struct bt_conn *conn, uint8_t reason) {
-  // もし接続直後の常時点灯中ならキャンセル
-  k_work_cancel_delayable(&connected_timeout_work);
-
   // 新たに10秒間の点滅開始 (0.2秒ON / 1.8秒OFF の2秒間隔)
   blink_count = 0;
   led_state = false;
-  k_timer_start(&led_timer, K_MSEC(200), K_MSEC(1800));
+  k_work_submit(&led_work);
 }
 
 BT_CONN_CB_DEFINE(conn_callbacks) = {
@@ -95,10 +85,10 @@ static int status_led_init() {
 
   gpio_pin_configure_dt(&status_led, GPIO_OUTPUT_INACTIVE);
 
-  // 起動直後は接続待ち状態として点滅開始 (10秒間)
+  // 起動直後は接続待ち状態として点滅開始
   blink_count = 0;
   led_state = false;
-  k_timer_start(&led_timer, K_MSEC(500), K_MSEC(500));
+  k_work_submit(&led_work);
 
   return 0;
 }
