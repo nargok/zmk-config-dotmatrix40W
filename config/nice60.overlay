@@ -84,6 +84,7 @@
         label = "LEFT_ENCODER";
         a-gpios = <&gpio0 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        resolution = <4>;
         steps = <24>;
         status = "okay";
     };
