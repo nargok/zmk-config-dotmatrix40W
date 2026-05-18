@@ -9,8 +9,23 @@
 #include <dt-bindings/zmk/rgb.h>   // RGB lighting control
 #include <dt-bindings/zmk/bt.h>    // Bluetooth management
 #include <dt-bindings/zmk/backlight.h> // Backlight control
+#include <dt-bindings/zmk/pointing.h> // Pointing/mouse control
 / {
     behaviors {
+        scroll_encoder: scroll_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+            tap-ms = <15>;
+        };
+
+        scroll_encoder_h: scroll_encoder_h {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_RIGHT>, <&msc SCRL_LEFT>;
+            tap-ms = <15>;
+        };
+
         bl_encoder: bl_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -28,7 +43,7 @@
     &kp LSHIFT &kp Z      &kp X      &kp C      &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT    &kp UP     &kp FSLH
     &mo 1      &kp LCTRL  &kp LALT   &kp LANG2  &kp SPACE                        &kp RET    &kp LANG1  &kp LEFT   &kp DOWN   &kp RIGHT
             >;
-            sensor-bindings = <&inc_dec_kp DOWN UP>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         first_layer {
@@ -38,7 +53,7 @@
     &trans    &kp F4   &kp F5   &kp F6   &kp LBKT  &none     &kp INT1  &kp INT3  &kp KP_MULTIPLY  &kp N1    &kp N2     &kp N3
     &trans    &kp F1   &kp F2   &kp F3   &mo 2                         &kp DEL   &kp KP_DIVIDE    &kp N0    &kp KP_DOT &kp KP_EQUAL
             >;
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&scroll_encoder_h>;
         };
 
         second_layer {
