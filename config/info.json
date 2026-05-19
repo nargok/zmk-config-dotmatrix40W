@@ -297,7 +297,7 @@
     },
     "sensors": [
         {
-            "name": "encoder_left",
+            "name": "encoder_center",
             "compatible": "alps,ec11"
         }
     ]

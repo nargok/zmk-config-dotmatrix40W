@@ -96,9 +96,9 @@
          /* the regulator to be disabled during deep sleep.       */
     };
 
-    encoder_left: encoder_left {
+    encoder_center: encoder_center {
         compatible = "alps,ec11";
-        label = "LEFT_ENCODER";
+        label = "CENTER_ENCODER";
         a-gpios = <&gpio0 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <96>;
@@ -107,7 +107,7 @@
 
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&encoder_left>;
+        sensors = <&encoder_center>;
         triggers-per-rotation = <24>;
     };
 
