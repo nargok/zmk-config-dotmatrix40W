@@ -294,5 +294,11 @@
                 }
             ]
         }
-    }
+    },
+    "sensors": [
+        {
+            "name": "encoder_left",
+            "compatible": "alps,ec11"
+        }
+    ]
 }
