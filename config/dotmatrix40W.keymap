@@ -148,7 +148,7 @@
         moA: moA {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp MINUS>, <&kp UNDERSCORE>;
+            bindings = <&kp MINUS>, <&kp JP_EQUAL>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
