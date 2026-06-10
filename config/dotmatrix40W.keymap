@@ -100,7 +100,7 @@
         mo2: mo2 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp N2>, <&kp AT>;
+            bindings = <&kp N2>, <&kp JP_DQUOTE>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -108,7 +108,7 @@
         mo6: mo6 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp N6>, <&kp CARET>;
+            bindings = <&kp N6>, <&kp JP_AMPERSAND>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -116,7 +116,7 @@
         mo7: mo7 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp N7>, <&kp AMPS>;
+            bindings = <&kp N7>, <&kp JP_QUOTE>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -124,7 +124,7 @@
         mo8: mo8 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp N8>, <&kp ASTRK>;
+            bindings = <&kp N8>, <&kp JP_LPAREN>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -132,7 +132,7 @@
         mo9: mo9 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp N9>, <&kp LPAR>;
+            bindings = <&kp N9>, <&kp JP_RPAREN>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -156,7 +156,7 @@
         moB: moB {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp EQUAL>, <&kp PLUS>;
+            bindings = <&kp JP_CARET>, <&kp JP_TILDE>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -172,7 +172,7 @@
         moD: moD {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp LBKT>, <&kp LBRC>;
+            bindings = <&kp JP_AT>, <&kp JP_BACKQUOTE>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -180,7 +180,7 @@
         moE: moE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp RBKT>, <&kp RBRC>;
+            bindings = <&kp JP_LBRACKET>, <&kp JP_LBRACE>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -196,7 +196,7 @@
         moG: moG {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp APOSTROPHE>, <&kp DQT>;
+            bindings = <&kp JP_COLON>, <&kp JP_ASTERISK>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -204,7 +204,7 @@
         moH: moH {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp BACKSLASH>, <&kp TILDE2>;
+            bindings = <&kp JP_RBRACKET>, <&kp TILDE2>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -222,6 +222,12 @@
         compatible = "zmk,keymap";
 
         layer_0 {
+            // -----------------------------------------------------------------------------------------
+            // | - / = |   Q   |   W   |   E   |   R   |   T   |   Y   |   U   |   I   |   O   |   P   | BSPC  |
+            // |  TAB  |   A   |   S   |   D   |   F   |   G   |   H   |   J   |   K   |   L   | ; / + | : / * |
+            // | SHIFT |   Z   |   X   |   C   |   V   |   B   |   N   |   M   | , / < | . / > |  UP   | / / ? |
+            // |  L1   | CTRL  |  ALT  | EISU  |     SPACE     |     ENTER     | KANA  | LEFT  | DOWN  | RIGHT |
+
             bindings = <
 &moA        &kp Q      &kp W     &kp E      &kp R      &kp T  &kp Y  &kp U    &kp I      &kp O     &kp P     &kp BSPC
 &kp TAB     &kp A      &kp S     &kp D      &kp F      &kp G  &kp H  &kp J    &kp K      &kp L     &moF      &moG
@@ -233,6 +239,12 @@
         };
 
         layer_1 {
+            // -----------------------------------------------------------------------------------------
+            // |  ESC  |  F10  |  F11  |  F12  | ; / + |       |       | : / * |   +   | 7 / ' | 8 / ( | 9 / ) |
+            // |       |  F7   |  F8   |  F9   | [ /｛ |       |       | ] / } |   -   | 4 / $ | 5 / % | 6 / & |
+            // |       |  F4   |  F5   |  F6   | @ / ` | ^ / ~ | \ / _ | \ / | |   *   | 1 / ! | 2 / " | 3 / # |
+            // |       |  F1   |  F2   |  F3   |      L2       |      DEL      |   /   |   0   |   .   |   =   |
+
             bindings = <
 &kp ESC  &kp F10  &kp F11  &kp F12  &moF    &none  &none  &moG     &kp KP_PLUS      &mo7    &mo8        &mo9
 &trans   &kp F7   &kp F8   &kp F9   &moE    &none  &none  &moH     &kp KP_MINUS     &kp N4  &kp N5      &mo6
@@ -244,6 +256,12 @@
         };
 
         layer_2 {
+            // -----------------------------------------------------------------------------------------
+            // |       |       |       |       |       |       |       |       |       |       |       | BTCLR |
+            // |       |       |       |       |       |       |       |       |       |       |       |       |
+            // |       |       |       |       |       |       |       |       |       | BT 1  | BT 2  | BT 3  |
+            // |       |       |       |       |               |               |       | BT 0  |       |       |
+
             bindings = <
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none         &none         &bt BT_CLR
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none         &none         &none
@@ -281,3 +299,7 @@
     time-to-max-speed-ms = <0>;
     delay-ms = <0>;
 };
+
+// Special thanks to the following repository for reference and inspiration:
+// https://github.com/kureyakey/zmk-config-zonkey
+
