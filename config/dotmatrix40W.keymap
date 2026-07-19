@@ -231,10 +231,10 @@
             // -------------------------------------------------------------------------------------------------
 
             bindings = <
-&moA        &kp Q      &kp W     &kp E           &kp R                 &kp T  &kp Y  &kp U    &kp I               &kp O     &kp P     &kp BSPC
-&kp TAB     &kp A      &kp S     &kp D           &kp F                 &kp G  &kp H  &kp J    &kp K               &kp L     &moF      &moG
-&kp LSHIFT  &kp Z      &kp X     &kp C           &kp V                 &kp B  &kp N  &kp M    &kp COMMA           &kp DOT   &kp UP    &kp FSLH
-&mo 1       &kp LCTRL  &kp LALT  &mt LGUI LANG2  &mt LEFT_SHIFT SPACE                &kp RET  &mt RGUI LS(LANG1)  &kp LEFT  &kp DOWN  &kp RIGHT
+&kp LEFT_BRACKET  &kp Q      &kp W                    &kp E           &kp R           &kp T        &kp Y        &kp U         &kp I            &kp O           &kp P      &kp RIGHT_BRACKET
+&mt LCTRL ESCAPE  &kp A      &kp S                    &mt LEFT_ALT D  &mt LEFT_GUI F  &mt LCTRL G  &mt RCTRL H  &mt RGUI J    &mt RIGHT_ALT K  &kp L           &moF       &kp MINUS
+&kp LEFT          &kp Z      &kp X                    &kp C           &kp V           &kp B        &kp N        &kp M         &kp COMMA        &kp DOT         &kp SLASH  &kp RIGHT
+&mo 3             &kp LCTRL  &mt LEFT_GUI LANGUAGE_2  &mt LSHIFT TAB  &lt 1 SPACE                               &lt 2 RETURN  &kp BACKSPACE    &kp LANGUAGE_1  &kp DOWN   &kp RIGHT
             >;
 
             sensor-bindings = <&encoder_scroll_v>;
@@ -249,10 +249,10 @@
             // -------------------------------------------------------------------------------------------------
 
             bindings = <
-&kp ESC  &kp F10  &kp F11  &kp F12  &moF   &none  &none  &moG     &kp KP_PLUS      &mo7    &mo8        &mo9
-&trans   &kp F7   &kp F8   &kp F9   &moE   &none  &none  &moH     &kp KP_MINUS     &kp N4  &kp N5      &mo6
-&trans   &kp F4   &kp F5   &kp F6   &moD   &moB   &moI   &moC     &kp KP_MULTIPLY  &kp N1  &mo2        &kp N3
-&trans   &kp F1   &kp F2   &kp F3   &mo 2                &kp DEL  &kp KP_DIVIDE    &mo0    &kp KP_DOT  &kp KP_EQUAL
+&trans     &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp SLASH     &kp EQUAL     &kp ASTERISK  &kp PLUS      &kp PERCENT   &trans
+&kp CARET  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0  &kp MINUS
+&trans     &kp F6        &kp F7        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12       &kp COMMA     &kp PERIOD    &kp DOLLAR    &trans
+&trans     &trans        &trans        &trans        &trans                                    &trans        &trans        &trans        &trans        &trans
             >;
 
             sensor-bindings = <&encoder_scroll_h>;
@@ -267,10 +267,10 @@
             // -------------------------------------------------------------------------------------------------
 
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none         &none         &bt BT_CLR
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &none         &none         &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
-&none  &none  &none  &none  &none                &none  &none  &bt BT_SEL 0  &none         &none
+&trans     &kp QUESTION  &kp EXCLAMATION  &kp AMPERSAND      &kp PIPE          &kp NON_US_BACKSLASH  &kp SLASH              &kp EQUAL          &kp ASTERISK     &kp PLUS          &kp PERCENT  &trans
+&kp CARET  &kp HASH      &kp GRAVE        &kp DOUBLE_QUOTES  &kp SQT           &kp TILDE             &kp LEFT               &kp DOWN           &kp UP_ARROW     &kp RIGHT         &kp COLON    &kp MINUS
+&trans     &kp AT_SIGN   &kp LESS_THAN    &kp LEFT_BRACE     &kp LEFT_BRACKET  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp DOLLAR   &trans
+&none      &trans        &kp DELETE       &trans             &trans                                                         &trans             &trans           &trans            &trans       &trans
             >;
 
             sensor-bindings = <&encoder_backlight>;
@@ -278,10 +278,10 @@
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans        &bt BT_CLR
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &bt BT_SEL 0  &trans        &trans
             >;
         };
 
